@@ -1,0 +1,230 @@
+{% raw %}
+  <!-- Hit template -->
+  <script type="text/template" id="hit-template">
+    <div class="card">
+      <div class="content">
+        <div class="tab-content">
+          <div class="hits-list-group">
+            <div class="hits-list-group-header">
+              <div class="row">
+                <div class="col-md-7">
+                  Name
+                </div>
+                <div class="col-md-4">
+                  Donor
+                </div>
+                <div class="col-md-1">
+                  <h6></h6>
+                </div>
+              </div>
+            </div>
+          {{#hits}}
+            <div class="hits-list-item">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="hits-list-item-name-primary">
+                    {{{ _highlightResult.Grants.Name.value }}}
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="ellipsis text-normal">
+                    <a href="https://www.grantmakers.io/profiles/{{ EIN }}" rel="tooltip" title="View all recent grants" data-placement="top">{{ OrganizationName }}</a>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="hits-list-action text-center" data-toggle="modal" data-target="#modal-grant-detail-{{ objectID }}">
+                    <i class="material-icons text-info">info</i>
+                  </div>
+                </div>
+              </div>
+              <div class="row"> 
+                <div class="col-md-7">
+                  <div class="small">
+                    <p>{{#Grants.City}}
+                      {{ Grants.City }}, {{ Grants.State }}
+                    {{/Grants.City}}</p>
+                  </div>
+                </div> 
+                <div class="col-md-4">
+                  <div class="small">
+                    <p><span class="hit-format-currency">{{ Grants.Amount }}</span></p>
+                  </div>
+                </div>              
+                <div class="col-md-11">
+                  <div class="text-muted">
+                    <small>{{{ _highlightResult.Grants.Purpose.value }}}<br></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/hits}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <!-- Hits Modal Template -->
+  <script type="text/template" id="hit-modal-template">
+  {{#hits}}
+  <div id="modal-grant-detail-{{ objectID }}" class="modal modal-algolia-hit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Grant Detail</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-9">
+              <div class="modal-algolia-hit-label">Name</div>
+              <p><strong>{{ Grants.Name }}</strong><br>{{ Grants.City }}, {{ Grants.State }}</p>
+              <div class="modal-algolia-hit-label">Donor</div>
+              <p>{{ OrganizationName }}</p>
+            </div>
+            <div class="col-md-3">
+              <div class="modal-algolia-hit-label">Amount</div>
+              <p><span class="hit-format-currency">{{ Grants.Amount }}</span></p>
+              <div class="modal-algolia-hit-label">Tax Year</div>
+              <p>{{ Filings.TaxYear }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="modal-algolia-hit-label">
+                Grant Purpose
+              </div>
+              <p>{{ Grants.Purpose }}</p>
+            </div>
+            <!--
+            <div class="col-md-12">
+              <div class="modal-algolia-hit-label">
+                Data Source
+              </div>
+              <p><small><a class="text-muted" href="{{ Filings.URL }}" target="_blank">IRS Electronic Form 990PF (XML)</a></small></p>
+            </div>
+            -->
+          </div>
+          <hr>
+        </div>
+        <div class="modal-footer">
+          <ul class="list-inline">
+            <!--<li><a class="btn btn-info btn-simple" data-dismiss="modal">Dismiss</a></li>-->
+            <li><a class="btn btn-info btn-simple" href="https://www.grantmakers.io/profiles/{{ EIN }}/">Donor Profile</a></li>
+            {{#Website}}
+              <li><a class="btn btn-info btn-simple" href="{{ Website }}">Donor Website</a></li>  
+            {{/Website}}
+            <!--<li><a href="{{ Filings.URL }}" class="btn btn-info btn-simple" data-toggle="tooltip" data-html="true" data-title="Donor IRS Form 990PF<br>(XML Format)">Download source data</a></li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/hits}}
+  </script>
+
+  <!-- Stats template -->
+  <script type="text/template" id="stats-template">
+    <div class="navbar navbar-transparent navbar-stats">
+
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#stats-header-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        -->
+        <h5><span class="format-number">{{ nbHits }}</span> Organization{{#nbHits_plural}}s{{/nbHits_plural}}  <small>Found in {{ processingTimeMS }}ms</small></h5>
+      </div>
+
+      <div class="collapse navbar-collapse" id="stats-header-collapse">
+        <ul id="view-selector" class="nav navbar-nav navbar-right" role="tablist">
+          <li><a class="btn btn-simple btn-sm disabled">Most Recent</a></li>
+          <!--
+          <li id="tab-detail" class="active">
+            <a href="#profile-{{ EIN }}" class="btn btn-simple btn-sm active" data-toggle="tab">
+              <i class="material-icons">assessment</i> Detail
+            </a>
+          </li>
+          <li id="tab-summary" class="">
+            <a href="#summary-{{ EIN }}" class="btn btn-simple btn-sm" data-toggle="tab">
+              <i class="material-icons">view_list</i> Summary
+            </a>
+          </li>
+          -->
+        </ul>
+      </div>
+    </div>
+  </script>
+
+  <!-- Facet template -->
+  <script type="text/template" id="facet-template">
+    <div class="facet">
+      <h5>{{ title }} <small><span data-facet-tooltip="{{ facet }}"><i class="facet-info material-icons md-18">info</i></span></small></h5>
+      <ul class="list-unstyled">
+        {{#values}}
+        <li>
+          <a href="" class="facet-link toggle-refine {{#disjunctive}}facet-disjunctive{{/disjunctive}} {{#isRefined}}facet-refined{{/isRefined}}" data-facet="{{ facet }}" data-value="{{ name }}">
+            <span class="facet-value">{{ name }}</span>
+            <span class="pull-right facet-count format-number-facet">{{ count }}</span>
+          </a>
+        </li>
+        {{/values}}
+      </ul>
+    </div>
+  </script>
+
+  <!-- Slider template -->
+  <script type="text/template" id="slider-template">
+    <div class="facet">
+      <h5>{{ title }} <small><span data-facet-tooltip="GrantMedian" rel="tooltip" title="Median grant size for latest tax year" data-placement="top"><i class="facet-info material-icons md-18">info</i></span></small></h5>
+      <input type="text" id="{{ facet }}-slider" data-min="{{ min }}" data-max="{{ max }}" data-from="{{ from }}" data-to="{{ to }}" class="format-number-facet" />
+    </div>
+  </script>
+
+  <script type="text/template" id="clear-template">
+    <div class="facet facet-clear-all">
+      <a class='clear-all clear-all-full-width btn btn-default btn-block btn-sm'>Clear All</a>
+    </div>
+  </script>
+
+  <!-- Pagination template -->
+  <script type="text/template" id="pagination-template">
+    <ul class="pagination pagination-info">
+      <li {{^prev_page}}class="disabled"{{/prev_page}}><a href="#" {{#prev_page}}class="go-to-page" data-page="{{ prev_page }}"{{/prev_page}}>&#60;</a></li>
+      {{#pages}}
+      <li class="{{#current}}active{{/current}} {{#disabled}}disabled{{/disabled}}"><a href="#" {{^disabled}} class="go-to-page" data-page="{{ number }}" {{/disabled}}>{{ number }}</a></li>
+      {{/pages}}
+      <li {{^next_page}}class="disabled"{{/next_page}}><a href="#" {{#next_page}}class="go-to-page" data-page="{{ next_page }}"{{/next_page}}>&#62;</a></li>
+    </ul>
+  </script>
+
+  <!-- Rate Limit Template -->
+  <script type="text/template" id="rate-limit-template">
+    <div id="rate-limit-message">
+      <h3>You have reached the hourly search limit</h3>
+      <p>We place limits on the number of searches to allow the maximum number of people access to this free service. You and/or your colleagues have reached this limit. Please try again in one hour. If you feel this was in error, please <a href="mailto:opensource@smartergiving.org">get in touch</a>.</p>
+      <p>If you are trying to capture data using automated means, the data is freely available on <a href="https://github.com/grantmakers/grantmakers.github.io/blob/master/algolia/algolia.json">Github</a>.</p>
+
+    </div>
+  </script>
+
+  <!-- No-Results template -->
+  <script type="text/template" id="no-results-template">
+    <div id="no-results-message" class="text-center">
+      <h3>We didn't find any results for the search "<em>{{ query }}</em>".</h3>
+      <ul class="list-inline">
+        {{#filters}}
+        <li class="{{ class }}" data-facet="{{ facet }}" data-value="{{ facet_value }}"><h5 class="btn btn-default"><small>{{ label }}</small><span class="value">{{ label_value }}</span> <a class="remove"><i class="material-icons">remove_circle</i></a></h5>
+          
+        </li>
+        {{/filters}}
+        <br>
+        <a class='btn btn-info btn-sm clear-all'>Clear all</a>
+      </ul>
+      <p class="text-muted">NOTE: Only grantmaking foundations who file electronically with the IRS are contained in this database</p>
+    </div>
+  </script>
+{% endraw %}

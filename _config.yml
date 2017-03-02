@@ -1,0 +1,25 @@
+# Site settings
+# Meta tags
+title: Grantmakers.io - Charity Search
+description: Find effective nonprofits by following the work of professional donors.
+
+# Jekyll settings
+baseurl: /charity-search # Leave this blank unless your site is located on a subpath, e.g. /blog
+url: https://www.grantmakers.io # Typically http://www.yourdomain.org
+sass:
+  sass_dir: assets/css/_sass
+
+# Google Analytics
+google-analytics: #UA-84268197-1
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - node_modules
+  - Creative_Tim_License.pdf
