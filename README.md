@@ -1,6 +1,6 @@
 # Grantmakers.io - A Community Project
 
-See also [Grantmakers.io Profiles repo](https://github.com/grantmakers/profiles)
+See also [Grantmakers.io main repo](https://github.com/grantmakers/grantmakers.github.io)
 
 If you have a question, feature request, find a bug, or just want to say hi, please open an [issue on GitHub](https://github.com/grantmakers/grantmakers.github.io/issues).
 
