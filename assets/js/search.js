@@ -12,12 +12,12 @@ $(document).ready(function() {
     hitsPerPage: 10,
     maxValuesPerFacet: 8,
     facets: [],
-    disjunctiveFacets: ['Grants.Name', 'Grants.City', 'Grants.State'],
+    disjunctiveFacets: ['grants.name', 'grants.city', 'grants.state'],
     index: INDEX_NAME
   };
   var FACETS_SLIDER = [];
-  var FACETS_ORDER_OF_DISPLAY = ['Grants.Name', 'Grants.City', 'Grants.State'];
-  var FACETS_LABELS = {'Grants.Name': 'Name', 'Grants.City': 'City', 'Grants.State': 'State'};
+  var FACETS_ORDER_OF_DISPLAY = ['grants.name', 'grants.city', 'grants.state'];
+  var FACETS_LABELS = {'grants.name': 'Recipient', 'grants.city': 'City', 'grants.state': 'State'};
 
   // Client + Helper initialization
   var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);

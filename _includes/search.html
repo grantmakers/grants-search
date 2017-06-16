@@ -8,7 +8,7 @@
             <div class="hits-list-group-header">
               <div class="row">
                 <div class="col-md-7">
-                  Name
+                  Recipient
                 </div>
                 <div class="col-md-4">
                   Donor
@@ -23,12 +23,12 @@
               <div class="row">
                 <div class="col-md-7">
                   <div class="hits-list-item-name-primary">
-                    {{{ _highlightResult.Grants.Name.value }}}
+                    {{{ _highlightResult.grants.name.value }}}
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="ellipsis text-normal">
-                    <a href="https://www.grantmakers.io/profiles/{{ EIN }}" rel="tooltip" title="View all recent grants" data-placement="top">{{ OrganizationName }}</a>
+                    <a href="https://www.grantmakers.io/profiles/{{ ein }}" rel="tooltip" title="View all recent grants" data-placement="top">{{ organization_name }}</a>
                   </div>
                 </div>
                 <div class="col-md-1">
@@ -40,19 +40,19 @@
               <div class="row"> 
                 <div class="col-md-7">
                   <div class="small">
-                    <p>{{#Grants.City}}
-                      {{ Grants.City }}, {{ Grants.State }}
-                    {{/Grants.City}}</p>
+                    <p>{{#grants.city}}
+                      {{ grants.city }}, {{ grants.state }}
+                    {{/grants.city}}</p>
                   </div>
                 </div> 
                 <div class="col-md-4">
                   <div class="small">
-                    <p><span class="hit-format-currency">{{ Grants.Amount }}</span></p>
+                    <p><span class="hit-format-currency">{{ grants.amount }}</span></p>
                   </div>
                 </div>              
                 <div class="col-md-11">
                   <div class="text-muted">
-                    <small>{{{ _highlightResult.Grants.Purpose.value }}}<br></small>
+                    <small>{{{ _highlightResult.grants.purpose.value }}}<br></small>
                   </div>
                 </div>
               </div>
@@ -78,15 +78,15 @@
           <div class="row">
             <div class="col-md-9">
               <div class="modal-algolia-hit-label">Name</div>
-              <p><strong>{{ Grants.Name }}</strong><br>{{ Grants.City }}, {{ Grants.State }}</p>
+              <p><strong>{{ grants.name }}</strong><br>{{ grants.city }}{{#grants.state}}, {{ grants.state }}{{/grants.state}}</p>
               <div class="modal-algolia-hit-label">Donor</div>
-              <p>{{ OrganizationName }}</p>
+              <p>{{ organization_name }}</p>
             </div>
             <div class="col-md-3">
               <div class="modal-algolia-hit-label">Amount</div>
-              <p><span class="hit-format-currency">{{ Grants.Amount }}</span></p>
+              <p><span class="hit-format-currency">{{ grants.amount }}</span></p>
               <div class="modal-algolia-hit-label">Tax Year</div>
-              <p>{{ Filings.TaxYear }}</p>
+              <p>{{ filings.tax_year }}</p>
             </div>
           </div>
           <div class="row">
@@ -94,14 +94,14 @@
               <div class="modal-algolia-hit-label">
                 Grant Purpose
               </div>
-              <p>{{ Grants.Purpose }}</p>
+              <p>{{ grants.purpose }}</p>
             </div>
             <!--
             <div class="col-md-12">
               <div class="modal-algolia-hit-label">
                 Data Source
               </div>
-              <p><small><a class="text-muted" href="{{ Filings.URL }}" target="_blank">IRS Electronic Form 990PF (XML)</a></small></p>
+              <p><small><a class="text-muted" href="{{ filings.url }}" target="_blank">IRS Electronic Form 990PF (XML)</a></small></p>
             </div>
             -->
           </div>
@@ -110,11 +110,11 @@
         <div class="modal-footer">
           <ul class="list-inline">
             <!--<li><a class="btn btn-info btn-simple" data-dismiss="modal">Dismiss</a></li>-->
-            <li><a class="btn btn-info btn-simple" href="https://www.grantmakers.io/profiles/{{ EIN }}/">Donor Profile</a></li>
-            {{#Website}}
-              <li><a class="btn btn-info btn-simple" href="{{ Website }}">Donor Website</a></li>  
-            {{/Website}}
-            <!--<li><a href="{{ Filings.URL }}" class="btn btn-info btn-simple" data-toggle="tooltip" data-html="true" data-title="Donor IRS Form 990PF<br>(XML Format)">Download source data</a></li>-->
+            <li><a class="btn btn-info btn-simple" href="https://www.grantmakers.io/profiles/{{ ein }}/">Donor Profile</a></li>
+            {{#website}}
+              <li><a class="btn btn-info btn-simple" href="{{ website }}">Donor Website</a></li>  
+            {{/website}}
+            <!--<li><a href="{{ filings.url }}" class="btn btn-info btn-simple" data-toggle="tooltip" data-html="true" data-title="Donor IRS Form 990PF<br>(XML Format)">Download source data</a></li>-->
           </ul>
         </div>
       </div>
@@ -144,12 +144,12 @@
           <li><a class="btn btn-simple btn-sm disabled">Most Recent</a></li>
           <!--
           <li id="tab-detail" class="active">
-            <a href="#profile-{{ EIN }}" class="btn btn-simple btn-sm active" data-toggle="tab">
+            <a href="#profile-{{ ein }}" class="btn btn-simple btn-sm active" data-toggle="tab">
               <i class="material-icons">assessment</i> Detail
             </a>
           </li>
           <li id="tab-summary" class="">
-            <a href="#summary-{{ EIN }}" class="btn btn-simple btn-sm" data-toggle="tab">
+            <a href="#summary-{{ ein }}" class="btn btn-simple btn-sm" data-toggle="tab">
               <i class="material-icons">view_list</i> Summary
             </a>
           </li>
@@ -215,11 +215,11 @@
   <script type="text/template" id="no-results-template">
     <div id="no-results-message" class="text-center">
       <!--
-      <h3>We didn't find any results for the search "<em>{{ query }}</em>".</h3>
-      <ul class="list-inline">
-      -->
       <h3>Sorry, experiments are currently underway</h3>
       <p>Try again in a few days or <a href="mailto:opensource@grantmakers.io">say hello</a></p>
+      -->
+      <h3>We didn't find any results for the search "<em>{{ query }}</em>".</h3>
+      <ul class="list-inline">
         {{#filters}}
         <li class="{{ class }}" data-facet="{{ facet }}" data-value="{{ facet_value }}"><h5 class="btn btn-default"><small>{{ label }}</small><span class="value">{{ label_value }}</span> <a class="remove"><i class="material-icons">remove_circle</i></a></h5>
           
