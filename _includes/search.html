@@ -23,7 +23,7 @@
               <div class="row">
                 <div class="col-md-7">
                   <div class="hits-list-item-name-primary">
-                    {{{ _highlightResult.grants.name.value }}}
+                    {{{ _highlightResult.grantee_name.value }}}
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -40,19 +40,19 @@
               <div class="row"> 
                 <div class="col-md-7">
                   <div class="small">
-                    <p>{{#grants.city}}
-                      {{ grants.city }}, {{ grants.state }}
-                    {{/grants.city}}</p>
+                    <p>{{#grantee_city}}
+                      {{{ _highlightResult.grantee_city.value }}}, {{ grantee_state }}
+                    {{/grantee_city}}</p>
                   </div>
                 </div> 
                 <div class="col-md-4">
                   <div class="small">
-                    <p><span class="hit-format-currency">{{ grants.amount }}</span></p>
+                    <p><span class="hit-format-currency">{{ grant_amount }}</span></p>
                   </div>
                 </div>              
                 <div class="col-md-11">
                   <div class="text-muted">
-                    <small>{{{ _highlightResult.grants.purpose.value }}}<br></small>
+                    <small>{{{ _highlightResult.grant_purpose.value }}}<br></small>
                   </div>
                 </div>
               </div>
@@ -78,15 +78,15 @@
           <div class="row">
             <div class="col-md-9">
               <div class="modal-algolia-hit-label">Name</div>
-              <p><strong>{{ grants.name }}</strong><br>{{ grants.city }}{{#grants.state}}, {{ grants.state }}{{/grants.state}}</p>
+              <p><strong>{{ grantee_name }}</strong><br>{{ grantee_city }}{{#grantee_state}}, {{ grantee_state }}{{/grantee_state}}</p>
               <div class="modal-algolia-hit-label">Donor</div>
               <p>{{ organization_name }}</p>
             </div>
             <div class="col-md-3">
               <div class="modal-algolia-hit-label">Amount</div>
-              <p><span class="hit-format-currency">{{ grants.amount }}</span></p>
+              <p><span class="hit-format-currency">{{ grant_amount }}</span></p>
               <div class="modal-algolia-hit-label">Tax Year</div>
-              <p>{{ filings.tax_year }}</p>
+              <p>{{ tax_year }}</p>
             </div>
           </div>
           <div class="row">
@@ -94,7 +94,7 @@
               <div class="modal-algolia-hit-label">
                 Grant Purpose
               </div>
-              <p>{{ grants.purpose }}</p>
+              <p>{{ grant_purpose }}</p>
             </div>
             <!--
             <div class="col-md-12">

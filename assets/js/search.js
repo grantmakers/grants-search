@@ -5,19 +5,19 @@ $(document).ready(function() {
   // ==============
 
   // Replace with your own values
-  var APPLICATION_ID = 'KDWVSZVS1I';
-  var SEARCH_ONLY_API_KEY = 'ce4d584b0de36ca3f8b4727fdb83c658';
-  var INDEX_NAME = 'grants_filtered_by_smartergiving';
+  var APPLICATION_ID = 'QA1231C5W9';
+  var SEARCH_ONLY_API_KEY = 'cd47ecb3457441878399b20acc8c3fbc';
+  var INDEX_NAME = 'grantmakers_io_grants_test';
   var PARAMS = {
     hitsPerPage: 10,
     maxValuesPerFacet: 8,
     facets: [],
-    disjunctiveFacets: ['grants.name', 'grants.city', 'grants.state'],
+    disjunctiveFacets: ['grantee_name', 'organization_name', 'grantee_city', 'grantee_state'],
     index: INDEX_NAME
   };
   var FACETS_SLIDER = [];
-  var FACETS_ORDER_OF_DISPLAY = ['grants.name', 'grants.city', 'grants.state'];
-  var FACETS_LABELS = {'grants.name': 'Recipient', 'grants.city': 'City', 'grants.state': 'State'};
+  var FACETS_ORDER_OF_DISPLAY = ['grantee_name', 'organization_name', 'grantee_city', 'grantee_state'];
+  var FACETS_LABELS = {'grantee_name': 'Recipient','organization_name': 'Donor', 'grantee_city': 'City', 'grantee_state': 'State'};
 
   // Client + Helper initialization
   var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
