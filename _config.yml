@@ -1,10 +1,10 @@
 # Site settings
 # Meta tags
-title: Grantmakers.io - Charity Search
-description: Find effective nonprofits by following the work of professional donors.
+title: Grantmakers.io - Grants Search
+description: Discover who foundations are funding
 
 # Jekyll settings
-baseurl: /charity-search # Leave this blank unless your site is located on a subpath, e.g. /blog
+baseurl: /grants-search # Leave this blank unless your site is located on a subpath, e.g. /blog
 url: https://www.grantmakers.io # Typically http://www.yourdomain.org
 sass:
   sass_dir: assets/css/_sass
