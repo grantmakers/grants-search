@@ -449,6 +449,8 @@ Search Results
 	}
 	.facet li {
 		margin-bottom: 3px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 	}
 	.facet-link {
 		font-size: 13px;
