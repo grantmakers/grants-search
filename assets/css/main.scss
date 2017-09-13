@@ -535,9 +535,11 @@ Search Results
 			}
 			.hits-list-item-name-primary {
 				font-size: 1em;
-    		//line-height: 29px;
     		font-weight: bold;
     		margin-bottom: 0.5em;
+        span {
+          font-weight: 300;
+        }
 			}
 
 		}
