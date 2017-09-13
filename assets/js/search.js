@@ -7,7 +7,7 @@ $(document).ready(function() {
   // Replace with your own values
   var APPLICATION_ID = 'QA1231C5W9';
   var SEARCH_ONLY_API_KEY = 'cd47ecb3457441878399b20acc8c3fbc';
-  var INDEX_NAME = 'grantmakers_io_grants_test';
+  var INDEX_NAME = 'grantmakers_io';
   var PARAMS = {
     hitsPerPage: 10,
     maxValuesPerFacet: 8,
