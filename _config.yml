@@ -14,7 +14,7 @@ google-analytics: UA-84268197-1
 
 # Sitewide helpers
 algolia_link: http://goto.algolia.com/l/139121/2017-10-24/26gc84
-number_of_grants: 4046342
+number_of_grants: 4056391
 
 # Build settings
 markdown: kramdown
