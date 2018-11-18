@@ -1,7 +1,7 @@
 # Site settings
 # Meta tags
 title: Grantmakers.io - Grants Search
-description: Discover who foundations are funding. A free tool to search across 4 million grants made by U.S. foundations.
+description: Discover who foundations are funding. A free tool to search across 4.5 million grants made by U.S. foundations.
 
 # Jekyll settings
 baseurl: /grants-search # Leave this blank unless your site is located on a subpath, e.g. /blog
@@ -14,7 +14,7 @@ google-analytics: UA-84268197-1
 
 # Sitewide helpers
 algolia_link: http://goto.algolia.com/l/139121/2017-10-24/26gc84
-number_of_grants: 4380368
+number_of_grants: 4519596
 
 # Build settings
 markdown: kramdown
